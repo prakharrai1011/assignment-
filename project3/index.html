@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Records</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    input, select {
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Records</h1>
+
+  <!-- Search box -->
+  <input type="text" id="search" placeholder="Search by name or course">
+
+  <!-- Dropdown -->
+  <select id="marksFilter">
+    <option value="all">All Students</option>
+    <option value="above60">Marks above 60</option>
+  </select>
+
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <script>
+    // Array of student objects
+    var students = [
+      { id: 1, name: "Nikhil Tiwari", course: "Computer Science", marks: 82 },
+      { id: 2, name: "Aryan mafia", course: "Mathematics", marks: 58 },
+      { id: 3, name: "Saksham cheeta", course: "Physics", marks: 67 },
+      { id: 4, name: "Harsh Singh", course: "Computer Science", marks: 45 },
+      { id: 5, name: "Prakhar rai", course: "Chemistry", marks: 74 },
+      { id: 6, name: "Ekansh chaurasiya", course: "Mathematics", marks: 91 },
+      { id: 7, name: "Nitish ydv", course: "Physics", marks: 60 },
+      { id: 8, name: "Dev ", course: "Chemistry", marks: 53 }
+    ];
+
+    // Get elements from the page
+    var tableBody = document.getElementById("tableBody");
+    var searchBox = document.getElementById("search");
+    var marksFilter = document.getElementById("marksFilter");
+
+    // Show a list of students in the table
+    function showStudents(list) {
+      tableBody.innerHTML = "";   // clear old rows
+
+      for (var i = 0; i < list.length; i++) {
+        var row = document.createElement("tr");
+
+        row.innerHTML =
+          "<td>" + list[i].id + "</td>" +
+          "<td>" + list[i].name + "</td>" +
+          "<td>" + list[i].course + "</td>" +
+          "<td>" + list[i].marks + "</td>";
+
+        tableBody.appendChild(row);
+      }
+    }
+
+    // Filter students using search text and dropdown
+    function filterStudents() {
+      var text = searchBox.value.toLowerCase();
+      var choice = marksFilter.value;
+      var result = [];
+
+      for (var i = 0; i < students.length; i++) {
+        var s = students[i];
+
+        var nameMatch = s.name.toLowerCase().includes(text);
+        var courseMatch = s.course.toLowerCase().includes(text);
+        var marksOk = (choice === "all") || (s.marks > 60);
+
+        if ((nameMatch || courseMatch) && marksOk) {
+          result.push(s);
+        }
+      }
+
+      showStudents(result);
+    }
+
+    // Run the filter when user types or changes the dropdown
+    searchBox.addEventListener("input", filterStudents);
+    marksFilter.addEventListener("change", filterStudents);
+
+    // Show all students when page loads
+    showStudents(students);
+  </script>
+
+</body>
+</html>
