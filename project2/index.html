@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Time Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; 
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 2px solid #333;
+            padding: 15px; 
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        
+        tr:hover {
+            background-color: #d1e7dd; 
+        }
+
+        
+        .lunch-break {
+            background-color: #ffcc00 !important;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        
+        .practical {
+            background-color: #87CEEB !important; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>College Time Table</h2>
+
+    <table>
+        
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        
+        
+        <tr>
+            <td>09:00 AM - 10:00 AM</td>
+            <td>Mathematics<br>(SURYA MANI SHUKLA)</td>
+            <td>Physics<br>(SHIV PRATAP)</td>
+            <td>Chemistry<br>(N.P TRIPATHO)</td>
+            <td>English<br>(YASEEN BHAKSH)</td>
+            <td>Mathematics<br>(SURYA MANI SHUKLA)</td>
+        </tr>
+        
+        <!-- 2nd Period -->
+        <tr>
+            <td>10:00 AM - 11:00 AM</td>
+            <td>Physics<br>(SHIV PRATAP)</td>
+            <td>Chemistry<br>(N.P TRIPATHO)</td>
+            <td>Mathematics<br>(SURYA MANI SHUKLA)</td>
+            <td>Physics<br>(SHIV PRATAP)</td>
+            <td>English<br>(YASEEN BHAKSH)</td>
+        </tr>
+
+        <!-- Lunch Break (Using colspan to span across all 5 days) -->
+        <tr>
+            <td>11:00 AM - 12:00 PM</td>
+            <td colspan="5" class="lunch-break">LUNCH BREAK</td>
+        </tr>
+
+        <!-- 3rd Period -->
+        <tr>
+            <td>12:00 PM - 01:00 PM</td>
+            <!-- Using rowspan="2" because practical labs usually take 2 hours -->
+            <td rowspan="2" class="practical">Physics Lab<br>(SHIV PRATAP)</td>
+            <td>Computer Science<br>(Prof. Lee)</td>
+            <td rowspan="2" class="practical">Chemistry Lab<br>(NEHA SINGH)</td>
+            <td>Library<br>(Self Study)</td>
+            <td rowspan="2" class="practical">Computer Lab<br>(PRAKHAR RAI)</td>
+        </tr>
+
+        <!-- 4th Period -->
+        <tr>
+            <td>01:00 PM - 02:00 PM</td>
+            <!-- Monday Lab takes up this slot -->
+            <td>Sports<br>(VIJAY BAHADUR SINGH)</td>
+            <!-- Wednesday Lab takes up this slot -->
+            <td>Computer Science<br>(RAGHAV CHAUHAN)</td>
+            <!-- Friday Lab takes up this slot -->
+        </tr>
+    </table>
+
+</body>
+</html>
